@@ -1,0 +1,41 @@
+
+  <h1 class="app-title">
+    Welcome to {{titleApp}}!
+  </h1>
+
+  <div class="todo-app">
+    <input class = "todo-input"
+           [(ngModel)]="title"
+           (keyup.enter)="addItem(title)"
+            placeholder="Hello world">
+    <button class="btn" (click)="addItem(title)">
+      Save
+    </button>
+
+    <!-- <app-input-button-unit (submit)="addItem($event)"></app-input-button-unit> -->
+    <ul>
+        <li *ngFor="let item of todoList">
+          <div class="todo-item">
+            <div>
+              <input type="checkbox" 
+              class="todo-checkbox" 
+              (click)="completeItem()"
+              [checked]="item.completed"/>
+              <span class="todo-title" [ngClass]="{'todo-complete': item.completed}">
+                  {{item.title}}
+              </span>
+            </div>
+              <button class="btn btn-red" (click)="removeItem(item)">
+                  remove
+              </button>
+            
+          </div>
+            <!-- <app-todo-item [item]="todoItem"
+                          (remove)="removeItem($event)" 
+                          (update)="updateItem($event.item, $event.changes)"
+            ></app-todo-item> -->
+        </li>
+    </ul>
+
+</div>
+  
